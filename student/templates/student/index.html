@@ -52,7 +52,8 @@
 <!-- navigation bar code end  -->
 
 <!-- student form start  -->
- <form class="container">
+ <form method="POST" action="" class="container">
+   {% csrf_token %}
   <div class="mb-3">
     <label for="inputname" class="form-label">Full Name</label>
     <input type="text" class="form-control" id="inputname" aria-describedby="emailHelp" name="name" required>
@@ -62,15 +63,15 @@
     <input type="text" class="form-control" id="inputemail" aria-describedby="emailHelp" name="email" required>
   </div>
   <div class="mb-3">
-    <label for="input" class="form-label">Password</label>
-    <input type="password" class="form-control" id="exampleInputPassword1" name="password" required>
+    <label for="inputpassword" class="form-label">Password</label>
+    <input type="password" class="form-control" id="inputpassword" name="password" required>
   </div>
   <div class="mb-3">
     <label for="inputphone" class="form-label">Phone Number</label>
     <input type="tel" class="form-control" id="inputphone" name="phone" required>
   </div>
   <div class="mb-3 form-check">
-    <input type="checkbox" class="form-check-input" id="exampleCheck1">
+    <input type="checkbox" class="form-check-input" id="exampleCheck1" name=""checkbox>
     <label class="form-check-label" for="exampleCheck1">Check me out</label>
   </div >
   <button type="submit" class="btn btn-primary">Submit</button>

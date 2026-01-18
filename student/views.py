@@ -22,3 +22,9 @@ def home(request):
 
 
     return render(request,'student/index.html')
+
+
+
+def homepage(request):
+    
+    return render(request,'home/home.html')

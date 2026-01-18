@@ -2,200 +2,201 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>Student Record Management</title>
+  <title>Student Record Management System</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <!-- Bootstrap -->
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
 
   <style>
-    body {
-      margin: 0;
-      font-family: "Segoe UI", sans-serif;
-      background: #0b1020;
-    }
+    body{margin:0;font-family:"Segoe UI",sans-serif;background:#0b1020;color:#fff}
+    section{padding:90px 0}
 
     /* Navbar */
-    .navbar-custom {
-      background: rgba(0,0,0,0.35);
-      backdrop-filter: blur(12px);
-    }
-
-    .navbar-brand {
-      font-weight: 800;
-      letter-spacing: 0.5px;
-      background: linear-gradient(90deg, #ffe29f, #ffffff);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-    }
-
-    .nav-link {
-      color: #eee !important;
-      margin: 0 8px;
-      position: relative;
-    }
-
-    .nav-link::after {
-      content: "";
-      position: absolute;
-      left: 0;
-      bottom: -6px;
-      width: 0;
-      height: 2px;
-      background: #ffe29f;
-      transition: 0.3s;
-    }
-
-    .nav-link:hover::after {
-      width: 100%;
-    }
-
-    .nav-btn {
-      border-radius: 30px;
-      padding: 8px 22px;
-      font-weight: 600;
-      background: linear-gradient(90deg, #ffe29f, #ffffff);
-      color: #1e3c72 !important;
-      border: none;
-    }
+    .navbar-custom{background:rgba(0,0,0,.35);backdrop-filter:blur(12px)}
+    .navbar-brand{font-weight:800;background:linear-gradient(90deg,#ffe29f,#fff);-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+    .nav-link{color:#eee!important}
+    .nav-btn{border-radius:30px;padding:8px 22px;font-weight:600;background:linear-gradient(90deg,#ffe29f,#fff);color:#1e3c72!important}
 
     /* Hero */
-    .hero {
-      min-height: 100vh;
-      display: flex;
-      align-items: center;
-      background: linear-gradient(120deg, #1e3c72, #2a5298, #6a11cb);
-      color: #fff;
-      position: relative;
-      overflow: hidden;
-      padding-top: 90px;
-    }
+    .hero{min-height:100vh;display:flex;align-items:center;background:linear-gradient(120deg,#1e3c72,#2a5298,#6a11cb);position:relative;overflow:hidden;padding-top:110px}
+    .hero h1{font-size:clamp(2.5rem,4.5vw,3.8rem);font-weight:800;background:linear-gradient(90deg,#fff,#ffe29f);-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+    .hero p{color:#e8e8e8;margin:20px 0 35px}
+    .btn-main{padding:14px 38px;border-radius:50px;border:none;font-weight:600;color:#1e3c72;background:linear-gradient(90deg,#ffe29f,#fff);box-shadow:0 0 25px rgba(255,226,159,.9)}
+    .hero-image img{max-width:100%;border-radius:20px;box-shadow:0 30px 80px rgba(0,0,0,.5)}
 
-    .hero::before,
-    .hero::after {
-      content: "";
-      position: absolute;
-      width: 500px;
-      height: 500px;
-      border-radius: 50%;
-      filter: blur(140px);
-      opacity: 0.6;
-    }
+    /* Common */
+    .section-title{text-align:center;margin-bottom:60px}
+    .section-title h2{font-weight:800}
+    .muted{color:#ccc}
 
-    .hero::before {
-      background: #00dbde;
-      top: -200px;
-      left: -200px;
+    /* Feature Cards */
+    .feature-card{
+      background:linear-gradient(160deg,rgba(255,255,255,.15),rgba(255,255,255,.05));
+      border:none;border-radius:22px;color:#fff;
+      backdrop-filter:blur(14px);
+      box-shadow:0 25px 60px rgba(0,0,0,.4);
+      transition:.4s ease;
     }
+    .feature-card:hover{
+      transform:translateY(-12px) scale(1.03);
+      box-shadow:0 40px 90px rgba(0,0,0,.7);
+    }
+    .feature-card .icon{
+      font-size:3.5rem;width:90px;height:90px;margin:0 auto;
+      border-radius:50%;display:grid;place-items:center;
+      background:linear-gradient(135deg,#ffe29f,#fff);
+      color:#1e3c72;box-shadow:0 0 25px rgba(255,226,159,.9);
+    }
+    .feature-card .card-title{font-weight:700}
 
-    .hero::after {
-      background: #ff5f6d;
-      bottom: -200px;
-      right: -200px;
-    }
+    .card-glass{background:rgba(255,255,255,.1);backdrop-filter:blur(14px);border-radius:18px;padding:30px;height:100%}
 
-    .hero h1 {
-      font-size: clamp(2.5rem, 4.5vw, 3.8rem);
-      font-weight: 800;
-      line-height: 1.1;
-      background: linear-gradient(90deg, #ffffff, #ffe29f);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-    }
-
-    .hero p {
-      font-size: 1.15rem;
-      color: #e8e8e8;
-      margin-top: 20px;
-      margin-bottom: 35px;
-    }
-
-    .btn-main {
-      padding: 14px 38px;
-      border-radius: 50px;
-      border: none;
-      font-weight: 600;
-      color: #1e3c72;
-      background: linear-gradient(90deg, #ffe29f, #ffffff);
-      box-shadow: 0 0 25px rgba(255, 226, 159, 0.9);
-      transition: 0.3s;
-    }
-
-    .btn-main:hover {
-      transform: translateY(-3px) scale(1.05);
-      box-shadow: 0 0 45px rgba(255, 255, 255, 1);
-    }
-
-    .hero-image {
-      animation: float 6s ease-in-out infinite;
-    }
-
-    .hero-image img {
-      max-width: 100%;
-      border-radius: 20px;
-      box-shadow: 0 30px 80px rgba(0,0,0,0.5);
-    }
-
-    @keyframes float {
-      0%, 100% { transform: translateY(0); }
-      50% { transform: translateY(-18px); }
-    }
+    .cta{background:linear-gradient(120deg,#6a11cb,#2575fc);text-align:center}
+    footer{background:#050814;color:#aaa;padding:40px 0}
   </style>
 </head>
 <body>
 
-<!-- Navbar -->
 <nav class="navbar navbar-expand-lg navbar-dark fixed-top navbar-custom">
   <div class="container">
     <a class="navbar-brand" href="#">SRMS</a>
-    <button class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#nav">
-      <span class="navbar-toggler-icon"></span>
-    </button>
-
+    <button class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#nav"><span class="navbar-toggler-icon"></span></button>
     <div class="collapse navbar-collapse" id="nav">
       <ul class="navbar-nav ms-auto align-items-lg-center">
-        <li class="nav-item"><a class="nav-link" href="#">Home</a></li>
-        <li class="nav-item"><a class="nav-link" href="#">Students</a></li>
-        <li class="nav-item"><a class="nav-link" href="#">Records</a></li>
-        <li class="nav-item"><a class="nav-link" href="#">About</a></li>
-        <li class="nav-item ms-lg-3">
-          <a class="nav-link nav-btn" href="#">Login</a>
-        </li>
+        <li class="nav-item"><a class="nav-link" href="#features">Features</a></li>
+        <li class="nav-item"><a class="nav-link" href="#work">How It Works</a></li>
+        <li class="nav-item"><a class="nav-link" href="#roles">Roles</a></li>
+        <li class="nav-item ms-lg-3"><a class="nav-link nav-btn" href="#">Login</a></li>
       </ul>
     </div>
   </div>
 </nav>
 
-<!-- Hero -->
 <section class="hero">
-  <div class="container position-relative">
+  <div class="container">
     <div class="row align-items-center">
-
-      <!-- Left -->
       <div class="col-lg-6 mb-5 mb-lg-0">
         <h1>Student Record<br>Management System</h1>
-        <p>
-          A smart platform to manage student profiles, admissions, attendance,
-          and performance with speed, security, and simplicity.
-        </p>
-
+        <p>A smart platform to manage student profiles, admissions, attendance and performance with speed and security.</p>
         <div class="d-flex gap-3 flex-wrap">
           <button class="btn-main">Get Started</button>
           <button class="btn btn-outline-light rounded-pill px-4">Explore</button>
         </div>
       </div>
-
-      <!-- Right -->
       <div class="col-lg-6 text-center">
         <div class="hero-image">
-          <img src="https://img.freepik.com/premium-vector/back-school-illustration_1302918-33836.jpg?semt=ais_hybrid&w=740&q=80"
-               alt="Dashboard">
+          <img src="https://img.freepik.com/premium-vector/back-school-illustration_1302918-33836.jpg?semt=ais_hybrid&w=740&q=80">
         </div>
       </div>
-
     </div>
   </div>
 </section>
+
+<!-- FEATURES -->
+<section id="features">
+  <div class="container">
+    <div class="section-title">
+      <h2>Powerful Features</h2>
+      <p class="muted">Everything you need in one intelligent platform</p>
+    </div>
+
+    <div class="row g-4">
+      <div class="col-lg-4 col-md-6">
+        <div class="feature-card card h-100 text-center">
+          <div class="card-body p-4">
+            <div class="icon">📚</div>
+            <h4 class="card-title mt-3">Student Profiles</h4>
+            <p class="card-text">Complete student information in one secure place.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-lg-4 col-md-6">
+        <div class="feature-card card h-100 text-center">
+          <div class="card-body p-4">
+            <div class="icon">🕒</div>
+            <h4 class="card-title mt-3">Attendance Tracking</h4>
+            <p class="card-text">Real-time attendance with smart summaries.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-lg-4 col-md-6">
+        <div class="feature-card card h-100 text-center">
+          <div class="card-body p-4">
+            <div class="icon">📊</div>
+            <h4 class="card-title mt-3">Marks & Reports</h4>
+            <p class="card-text">Generate detailed academic reports instantly.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-lg-4 col-md-6">
+        <div class="feature-card card h-100 text-center">
+          <div class="card-body p-4">
+            <div class="icon">💳</div>
+            <h4 class="card-title mt-3">Fee Management</h4>
+            <p class="card-text">Track payments, dues and receipts easily.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-lg-4 col-md-6">
+        <div class="feature-card card h-100 text-center">
+          <div class="card-body p-4">
+            <div class="icon">🔒</div>
+            <h4 class="card-title mt-3">Secure Storage</h4>
+            <p class="card-text">Role-based access and modern data protection.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-lg-4 col-md-6">
+        <div class="feature-card card h-100 text-center">
+          <div class="card-body p-4">
+            <div class="icon">📤</div>
+            <h4 class="card-title mt-3">Export & Backup</h4>
+            <p class="card-text">Download records in Excel or PDF anytime.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="work" style="background:#0f1630">
+  <div class="container">
+    <div class="section-title"><h2>How It Works</h2></div>
+    <div class="row text-center g-4">
+      <div class="col-md-3"><div class="card-glass">1. Add Students</div></div>
+      <div class="col-md-3"><div class="card-glass">2. Manage Records</div></div>
+      <div class="col-md-3"><div class="card-glass">3. Track Progress</div></div>
+      <div class="col-md-3"><div class="card-glass">4. Generate Reports</div></div>
+    </div>
+  </div>
+</section>
+
+<section id="roles" style="background:#0f1630">
+  <div class="container">
+    <div class="section-title"><h2>User Roles</h2></div>
+    <div class="row g-4">
+      <div class="col-md-4"><div class="card-glass">👑 Admin – Full Control</div></div>
+      <div class="col-md-4"><div class="card-glass">👩‍🏫 Teacher – Manage Classes</div></div>
+      <div class="col-md-4"><div class="card-glass">🎓 Student – View Records</div></div>
+    </div>
+  </div>
+</section>
+
+<section class="cta">
+  <div class="container">
+    <h2 class="mb-4">Ready to manage students smarter?</h2>
+    <button class="btn-main">Create Account</button>
+  </div>
+</section>
+
+<footer>
+  <div class="container text-center">© 2026 Student Record Management System</div>
+</footer>
 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
 </body>

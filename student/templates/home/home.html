@@ -52,6 +52,71 @@
     .card-glass{background:rgba(255,255,255,.1);backdrop-filter:blur(14px);border-radius:18px;padding:30px;height:100%}
 
     .cta{background:linear-gradient(120deg,#6a11cb,#2575fc);text-align:center}
+    .work-section {
+  background: linear-gradient(180deg, #0f1630, #0b1020);
+}
+
+.timeline {
+  position: relative;
+  max-width: 900px;
+  margin: auto;
+}
+
+.timeline::before {
+  content: "";
+  position: absolute;
+  left: 50%;
+  top: 0;
+  width: 3px;
+  height: 100%;
+  background: linear-gradient(#ffe29f, #6a11cb);
+  transform: translateX(-50%);
+}
+
+.step {
+  position: relative;
+  width: 50%;
+  padding: 30px 40px;
+}
+
+.step.left { left: 0; text-align: right; }
+.step.right { left: 50%; }
+
+.step .content {
+  background: rgba(255,255,255,0.1);
+  backdrop-filter: blur(12px);
+  padding: 25px 30px;
+  border-radius: 16px;
+  box-shadow: 0 20px 50px rgba(0,0,0,.4);
+  position: relative;
+}
+
+.step .content::after {
+  content: "";
+  position: absolute;
+  top: 30px;
+  width: 14px;
+  height: 14px;
+  background: #ffe29f;
+  border-radius: 50%;
+  box-shadow: 0 0 20px rgba(255,226,159,1);
+}
+
+.step.left .content::after { right: -47px; }
+.step.right .content::after { left: -47px; }
+
+.step .num {
+  font-size: 2rem;
+  font-weight: 800;
+  color: #ffe29f;
+}
+
+@media (max-width: 768px) {
+  .timeline::before { left: 20px; }
+  .step { width: 100%; left: 0; padding-left: 60px; text-align: left; }
+  .step .content::after { left: -40px; }
+}
+
     footer{background:#050814;color:#aaa;padding:40px 0}
   </style>
 </head>
@@ -164,17 +229,49 @@
   </div>
 </section>
 
-<section id="work" style="background:#0f1630">
+<section id="work" class="work-section">
   <div class="container">
-    <div class="section-title"><h2>How It Works</h2></div>
-    <div class="row text-center g-4">
-      <div class="col-md-3"><div class="card-glass">1. Add Students</div></div>
-      <div class="col-md-3"><div class="card-glass">2. Manage Records</div></div>
-      <div class="col-md-3"><div class="card-glass">3. Track Progress</div></div>
-      <div class="col-md-3"><div class="card-glass">4. Generate Reports</div></div>
+    <div class="section-title">
+      <h2>How It Works</h2>
+      <p class="muted">From registration to reports — everything flows smoothly</p>
+    </div>
+
+    <div class="timeline">
+      <div class="step left">
+        <div class="content">
+          <span class="num">01</span>
+          <h4>Add Students</h4>
+          <p>Register students with complete personal and academic details.</p>
+        </div>
+      </div>
+
+      <div class="step right">
+        <div class="content">
+          <span class="num">02</span>
+          <h4>Manage Records</h4>
+          <p>Update profiles, classes, fees and attendance in real time.</p>
+        </div>
+      </div>
+
+      <div class="step left">
+        <div class="content">
+          <span class="num">03</span>
+          <h4>Track Progress</h4>
+          <p>Monitor performance, marks and attendance trends visually.</p>
+        </div>
+      </div>
+
+      <div class="step right">
+        <div class="content">
+          <span class="num">04</span>
+          <h4>Generate Reports</h4>
+          <p>Create detailed reports in one click — PDF or Excel.</p>
+        </div>
+      </div>
     </div>
   </div>
 </section>
+
 
 <section id="roles" style="background:#0f1630">
   <div class="container">
